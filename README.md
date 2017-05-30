@@ -1,16 +1,26 @@
 # API_test
 
 To build the API_test, the following build system dependencies are required:
-  - ubuntu :
+ 
+ - ubuntu :
   $ sudo apt-get install libtool
+  
   $ sudo apt-get install autoconf
+  
   $ sudo apt-get install autumake
+  
   $ git clone https://github.com/json-c/json-c.git
+  
   $ cd json-c
+  
   json-c$ sh autogen.sh
+  
   json-c$ ./configure --prefix=/usr/local
+  
   json-c$ make
+  
   json-c$ make install
+  
   
   - json-c test
   json-c$ make check 
