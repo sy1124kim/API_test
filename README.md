@@ -2,7 +2,7 @@
 
 To build the API_test, the following build system dependencies are required:
  
- # ubuntu
+-> ubuntu
  
   $ sudo apt-get install libtool
   
@@ -23,7 +23,7 @@ To build the API_test, the following build system dependencies are required:
   json-c$ make install
   
   
- # json-c test
+ -> json-c test
  
   json-c$ make check 
   
