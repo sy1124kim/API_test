@@ -13,7 +13,7 @@ int main()
 {
 	int rc;
 
-	register_function();
+//	register_function();
 
 	receiver_loop_stup();
 

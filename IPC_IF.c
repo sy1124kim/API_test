@@ -44,7 +44,7 @@ int IPC_SendMessage(SOCKET_HANDLE *phandle, char *buf, int size)
 			break;
 		}
 	}
-	printf("<<IPC>> sendmessage buf=%s!!\n", buf);
+	printf("<<IPC>> sendmessage buf=%s\n", buf);
 	IPC_SocketSendMessage(phandle, buf, size);
 
 	return 0;

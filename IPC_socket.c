@@ -71,6 +71,7 @@ int IPC_SocketClientAccept(SOCKET_HANDLE *phandle)
 	int client_sockfd;
 
 	printf("<< Accept>> server_h=%d\n", phandle->server_h);
+	client_len = sizeof(clientaddr);
 
 	while(1)
 	{
@@ -106,13 +107,15 @@ int IPC_SocketGetMessage(SOCKET_HANDLE *phandle, int *msgSize)
 
 int IPC_SocketRecvMessage(SOCKET_HANDLE *phandle, char * buf, int size)
 {
-
+	int ret_size = 0;
+	printf("<<IPC>> recvMessage buf = %s\n", buf);
 	while(1)
 	{
-		if(read(phandle->client_h, buf, size) > 0)
+		ret_size = read(phandle->client_h, buf, size);
+		if(ret_size > 0)
 			break;
 	}
-	printf("<<IPC>> recvMessage = %s\n", buf);
+	printf("<<IPC>> recvMessage = %s\n, size = %d, ret_size = %d", buf, size, ret_size);
 	return 0;	
 }
 
