@@ -2,7 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "/usr/local/include/json-c/json.h"
-#include "dockzen_json.h"
+#include "json-c.h"
 
 char *json_getString(char *data, char * key)
 {
@@ -45,7 +45,8 @@ char *json_getString(char *data, char * key)
 
 	json_object_put(inputObj);
 
-	printf("SERVER>> ret_buf = %s\n", ret_buf);
+	printf("JSON>> ret_buf = %s\n", ret_buf);
+	
 	return ret_buf;
 }
 
@@ -104,36 +105,6 @@ char *json_getObject(char *data, char *key)
 		}
 		json_object_put(inputObj);
 	}
-	return ret_buf;
-}
-
-char *hello_makeJson(char *funName, hello_info *helloInfo)
-{
-	int i;
-	struct json_object *newObj, *helloObj;
-	char *buf = NULL;
-	char *ret_buf = NULL;
-
-	newObj = json_object_new_object();
-	helloObj = json_object_new_object();
-
-	json_object_object_add(newObj, "func", json_object_new_string(funName));
-	json_object_object_add(helloObj, "data", json_object_new_string(helloInfo->data));
-	json_object_object_add(helloObj, "count", json_object_new_int(helloInfo->count));
-	json_object_object_add(newObj, "args", helloObj);
-
-	buf = json_object_to_json_string_ext(newObj, JSON_C_TO_STRING_SPACED | JSON_C_TO_STRING_PRETTY);
-
-	ret_buf = (char *)malloc(strlen(buf)+1);
-
-	if(ret_buf != NULL)
-	{
-		memset(ret_buf, 0x00, strlen(buf)+1);
-		memcpy(ret_buf, buf, strlen(buf));
-	}
-
-	json_object_put(newObj);
-
 	return ret_buf;
 }
 
